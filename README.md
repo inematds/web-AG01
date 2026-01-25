@@ -1,78 +1,93 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# INEMA.Club
 
-# Gorgeous Websites
+Plataforma educacional focada em **Inteligencia Artificial** e **Robotica**. Preparamos voce para as profissoes do futuro com metodologia pratica, jogos educativos e comunidade ativa.
 
-A stunning, modern web application showcasing beautiful UI/UX design with animated components, card scanner effects, and integrated user authentication.
+## Sobre o Projeto
 
-## Features
+O INEMA.Club e uma plataforma que oferece:
 
-- 🎨 **Beautiful UI/UX** - Premium design with glassmorphism, gradients, and smooth animations
-- 🎯 **Card Scanner Effect** - Animated card scanning visualization
-- 🔐 **User Authentication** - Supabase-powered auth with personalized dashboards
-- 📊 **User Dashboard** - Track goals, income, and clients
-- ⚡ **Performance Optimized** - Built with React, TypeScript, and Vite
+- **Aprendizado Acelerado** - Metodologia que combina teoria e pratica
+- **Jogos Educativos (EAI)** - Aprenda IA de forma divertida em eai.inema.club
+- **Comunidade INEMA.VIP** - Networking e troca de experiencias no Telegram
+- **Mentorias Exclusivas** - Acompanhamento personalizado com especialistas
+- **Certificados** - Reconhecimento oficial de conclusao
 
-## Run Locally
+## Funcionalidades do Site
 
-**Prerequisites:** Node.js 16+
+| Funcionalidade | Status | Descricao |
+|----------------|--------|-----------|
+| Landing Page | Ativo | Apresentacao completa da plataforma |
+| Diagnostico IA | Demo | Analise de potencial com IA (mockado) |
+| Login/Dashboard | Desativado | Requer configuracao do Supabase |
+| Planos/Precos | Ativo | Basico (Gratis), Premium (R$97), VIP (R$297) |
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/ItsssssJack/Gorgeous-websites.-.git
-   cd Gorgeous-websites.-
-   ```
+## Modo Demo vs Producao
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+O site esta configurado em **modo demo** para funcionar sem dependencias externas.
 
-3. **Set up environment variables**
-   
-   Copy `.env.example` to `.env.local`:
-   ```bash
-   cp .env.example .env.local
-   ```
-   
-   Then edit `.env.local` and add your credentials:
-   - `VITE_SUPABASE_URL` - Your Supabase project URL
-   - `VITE_SUPABASE_ANON_KEY` - Your Supabase anon/public key
-   - `GEMINI_API_KEY` (optional) - For AI features
+### Modo Demo (Atual)
+- Site funciona 100% sem configuracao
+- Diagnostico IA retorna dados de exemplo
+- Login/Dashboard desativados
+- Bundle otimizado: ~373KB
 
-4. **Run the development server**
-   ```bash
-   npm run dev
-   ```
+### Modo Producao (Requer Configuracao)
+Para ativar todas as funcionalidades, configure as variaveis de ambiente:
 
-5. **Build for production**
-   ```bash
-   npm run build
-   ```
+| Variavel | Servico | Funcionalidade |
+|----------|---------|----------------|
+| `VITE_GEMINI_API_KEY` | Google AI | Diagnostico com IA real |
+| `VITE_SUPABASE_URL` | Supabase | Login e Dashboard |
+| `VITE_SUPABASE_ANON_KEY` | Supabase | Login e Dashboard |
 
-## Deploy to Vercel
+## Executar Localmente
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ItsssssJack/Gorgeous-websites.-)
+**Requisitos:** Node.js 16+
 
-1. Click the "Deploy" button above or go to [Vercel](https://vercel.com)
-2. Import your GitHub repository
-3. Add environment variables in Vercel dashboard:
-   - `VITE_SUPABASE_URL`
-   - `VITE_SUPABASE_ANON_KEY`
-   - `GEMINI_API_KEY` (optional)
-4. Deploy!
+```bash
+# Clonar repositorio
+git clone https://github.com/inematds/web-AG01.git
+cd web-AG01
 
-## Supabase Setup
+# Instalar dependencias
+npm install
 
-To use the authentication features, you'll need to set up Supabase:
+# Executar em desenvolvimento
+npm run dev
 
-1. Create a [Supabase](https://supabase.com) account
-2. Create a new project
-3. Run these SQL commands in the Supabase SQL Editor:
+# Build para producao
+npm run build
+```
+
+O site estara disponivel em `http://localhost:3000`
+
+## Deploy no Vercel
+
+1. Acesse [vercel.com](https://vercel.com)
+2. Importe o repositorio `inematds/web-AG01`
+3. Deploy automatico (funciona sem variaveis de ambiente)
+4. (Opcional) Adicione variaveis para funcionalidades extras
+
+**URL de Producao:** https://web-ag01.vercel.app/
+
+## Ativar Funcionalidades Extras
+
+### Diagnostico com IA Real (Google Gemini)
+
+1. Acesse [Google AI Studio](https://aistudio.google.com/)
+2. Crie uma API Key
+3. No Vercel: Settings > Environment Variables
+4. Adicione: `VITE_GEMINI_API_KEY` = sua_chave
+5. Edite `services/geminiService.ts` e descomente o codigo original
+
+### Login e Dashboard (Supabase)
+
+1. Crie conta em [supabase.com](https://supabase.com)
+2. Crie um novo projeto
+3. Execute o SQL abaixo no SQL Editor:
 
 ```sql
--- Create users table
+-- Tabela de usuarios
 CREATE TABLE users (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   email TEXT UNIQUE NOT NULL,
@@ -83,7 +98,7 @@ CREATE TABLE users (
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- Create user_dashboard table
+-- Tabela de dashboard
 CREATE TABLE user_dashboard (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   user_id UUID REFERENCES users(id) ON DELETE CASCADE,
@@ -94,44 +109,74 @@ CREATE TABLE user_dashboard (
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- Enable Row Level Security
+-- Habilitar RLS
 ALTER TABLE users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE user_dashboard ENABLE ROW LEVEL SECURITY;
 
--- Create policies (basic - improve for production)
-CREATE POLICY "Users can read own data" ON users
-  FOR SELECT USING (true);
-
-CREATE POLICY "Users can insert own data" ON users
-  FOR INSERT WITH CHECK (true);
-
-CREATE POLICY "Users can read own dashboard" ON user_dashboard
-  FOR SELECT USING (true);
-
-CREATE POLICY "Users can insert own dashboard" ON user_dashboard
-  FOR INSERT WITH CHECK (true);
-
-CREATE POLICY "Users can update own dashboard" ON user_dashboard
-  FOR UPDATE USING (true);
+-- Politicas de acesso
+CREATE POLICY "Allow all" ON users FOR ALL USING (true);
+CREATE POLICY "Allow all" ON user_dashboard FOR ALL USING (true);
 ```
 
-4. Copy your project URL and anon key to `.env.local`
+4. Copie a URL e Anon Key do projeto
+5. No Vercel, adicione:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_ANON_KEY`
 
-## Tech Stack
+## Estrutura do Projeto
 
-- **React 19** - UI framework
-- **TypeScript** - Type safety
-- **Vite** - Build tool
-- **Framer Motion** - Animations
-- **Supabase** - Backend & Auth
-- **Tailwind CSS** - Styling (via inline styles)
-- **Lucide React** - Icons
+```
+web-AG01/
+├── components/          # Componentes React
+│   ├── Navbar.tsx       # Navegacao
+│   ├── Hero.tsx         # Secao principal
+│   ├── Features.tsx     # Metodologia INEMA
+│   ├── Pricing.tsx      # Planos e precos
+│   ├── Testimonials.tsx # Depoimentos
+│   ├── AuditTool.tsx    # Diagnostico IA
+│   ├── AuthForm.tsx     # Login/Cadastro
+│   ├── Dashboard.tsx    # Painel do usuario
+│   └── Footer.tsx       # Rodape
+├── services/
+│   └── geminiService.ts # Integracao Google AI (demo)
+├── lib/
+│   └── supabase.ts      # Cliente Supabase (opcional)
+├── App.tsx              # Componente principal
+├── index.tsx            # Entrada da aplicacao
+└── index.html           # HTML base
+```
 
-## License
+## Stack Tecnologica
+
+- **React 19** - Framework UI
+- **TypeScript** - Tipagem estatica
+- **Vite** - Build tool rapido
+- **Tailwind CSS** - Estilizacao
+- **Framer Motion** - Animacoes
+- **Lucide React** - Icones
+- **Supabase** - Backend (opcional)
+- **Google Gemini** - IA (opcional)
+- **Vercel** - Hospedagem
+
+## Links Uteis
+
+- **Site:** https://web-ag01.vercel.app/
+- **EAI Games:** https://eai.inema.club
+- **INEMA.VIP:** Comunidade no Telegram
+- **Repositorio:** https://github.com/inematds/web-AG01
+
+## Contribuicao
+
+1. Fork o repositorio
+2. Crie uma branch: `git checkout -b minha-feature`
+3. Commit: `git commit -m "Adiciona feature"`
+4. Push: `git push origin minha-feature`
+5. Abra um Pull Request
+
+## Licenca
 
 MIT
 
 ---
 
-Built with ❤️ using cutting-edge web technologies
-
+Feito com dedicacao para o futuro da educacao em IA e Robotica.
