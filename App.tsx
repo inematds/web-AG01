@@ -12,6 +12,7 @@ import CardScannerSection from './components/CardScannerSection';
 import AuthForm from './components/AuthForm';
 import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
+import { isSupabaseEnabled } from './lib/supabase';
 
 const App: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,10 +28,12 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Check if user is logged in
-    const storedUserId = localStorage.getItem('userId');
-    if (storedUserId) {
-      setUserId(storedUserId);
+    // Check if user is logged in (only if Supabase is enabled)
+    if (isSupabaseEnabled) {
+      const storedUserId = localStorage.getItem('userId');
+      if (storedUserId) {
+        setUserId(storedUserId);
+      }
     }
   }, []);
 
@@ -57,8 +60,8 @@ const App: React.FC = () => {
     }
   };
 
-  // If user wants to see dashboard
-  if (showDashboard && userId) {
+  // If user wants to see dashboard (only if Supabase is enabled)
+  if (isSupabaseEnabled && showDashboard && userId) {
     return (
       <>
         <Dashboard userId={userId} onLogout={handleLogout} />
@@ -85,8 +88,8 @@ const App: React.FC = () => {
         <Testimonials />
         <CardScannerSection />
 
-        {/* Auth Form Section - Only show if not logged in */}
-        {!userId && <AuthForm onAuthSuccess={handleAuthSuccess} />}
+        {/* Auth Form Section - Only show if Supabase enabled and not logged in */}
+        {isSupabaseEnabled && !userId && <AuthForm onAuthSuccess={handleAuthSuccess} />}
       </main>
 
       <Footer />

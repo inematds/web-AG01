@@ -1,13 +1,15 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables. Please check your .env.local file.');
-}
+// MODO DEMO - Supabase desativado temporariamente
+// Para ativar: adicione VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY no Vercel
+export const supabase: SupabaseClient | null = (supabaseUrl && supabaseAnonKey)
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : null;
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const isSupabaseEnabled = !!supabase;
 
 // Types for our database
 export interface User {

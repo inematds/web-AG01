@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Zap, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { isSupabaseEnabled } from '../lib/supabase';
 
 interface NavbarProps {
   isScrolled: boolean;
@@ -53,8 +54,8 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, userId, onLoginClick, onDas
               </a>
             ))}
 
-            {/* Login/Dashboard button */}
-            {userId ? (
+            {/* Login/Dashboard button - only show if Supabase enabled */}
+            {isSupabaseEnabled && (userId ? (
               <button
                 onClick={onDashboardClick}
                 className="text-sm font-medium text-[#99A1AF] hover:text-[#BFF549] transition-colors relative group"
@@ -70,7 +71,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, userId, onLoginClick, onDas
                 Entrar
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#BFF549] transition-all duration-300 group-hover:w-full"></span>
               </button>
-            )}
+            ))}
 
             <button className={`bg-white text-black font-bold text-sm rounded-full hover:bg-[#BFF549] transition-all transform active:scale-95 ${isScrolled ? 'px-4 py-2' : 'px-6 py-2.5'
               }`}>
@@ -125,7 +126,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, userId, onLoginClick, onDas
                 </motion.a>
               ))}
 
-              {userId ? (
+              {isSupabaseEnabled && (userId ? (
                 <motion.button
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -151,7 +152,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, userId, onLoginClick, onDas
                 >
                   Entrar
                 </motion.button>
-              )}
+              ))}
 
               <motion.button
                 initial={{ opacity: 0, y: 20 }}
