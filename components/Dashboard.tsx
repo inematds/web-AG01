@@ -70,10 +70,10 @@ const Dashboard: React.FC<DashboardProps> = ({ userId, onLogout }) => {
 
             if (error) throw error;
 
-            setSaveMessage('✓ Salvo com sucesso!');
+            setSaveMessage('✓ Saved successfully!');
             setTimeout(() => setSaveMessage(''), 3000);
         } catch (error: any) {
-            setSaveMessage('✗ Erro ao salvar: ' + error.message);
+            setSaveMessage('✗ Error saving: ' + error.message);
         } finally {
             setIsSaving(false);
         }
@@ -87,7 +87,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userId, onLogout }) => {
     if (isLoading) {
         return (
             <div className="min-h-screen bg-black flex items-center justify-center">
-                <div className="text-2xl text-white">Carregando...</div>
+                <div className="text-2xl text-white">Loading...</div>
             </div>
         );
     }
@@ -117,10 +117,10 @@ const Dashboard: React.FC<DashboardProps> = ({ userId, onLogout }) => {
                 >
                     <div>
                         <h1 className="text-6xl font-black mb-2 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
-                            Painel
+                            Dashboard
                         </h1>
                         <p className="text-xl text-gray-400">
-                            Bem-vindo(a), <span className="text-[#BFF549] font-bold">{user?.name}</span>
+                            Welcome back, <span className="text-[#BFF549] font-bold">{user?.name}</span>
                         </p>
                     </div>
 
@@ -129,7 +129,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userId, onLogout }) => {
                         className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-white hover:bg-white/10 transition-all"
                     >
                         <LogOut className="w-5 h-5" />
-                        Sair
+                        Logout
                     </button>
                 </motion.div>
 
@@ -146,12 +146,12 @@ const Dashboard: React.FC<DashboardProps> = ({ userId, onLogout }) => {
                             <p className="text-white font-semibold">{user?.email}</p>
                         </div>
                         <div>
-                            <p className="text-sm text-gray-400 mb-1">Nome</p>
+                            <p className="text-sm text-gray-400 mb-1">Name</p>
                             <p className="text-white font-semibold">{user?.name}</p>
                         </div>
                         <div>
                             <p className="text-sm text-gray-400 mb-1">Website</p>
-                            <p className="text-white font-semibold">{user?.website || 'Não informado'}</p>
+                            <p className="text-white font-semibold">{user?.website || 'Not provided'}</p>
                         </div>
                     </div>
                 </motion.div>
@@ -171,12 +171,12 @@ const Dashboard: React.FC<DashboardProps> = ({ userId, onLogout }) => {
                                 <div className="p-3 bg-gradient-to-br from-[#BFF549] to-[#FACC15] rounded-xl">
                                     <Target className="w-6 h-6 text-black" />
                                 </div>
-                                <h3 className="text-lg font-bold text-white">Objetivo</h3>
+                                <h3 className="text-lg font-bold text-white">Goal</h3>
                             </div>
                             <textarea
                                 value={goal}
                                 onChange={(e) => setGoal(e.target.value)}
-                                placeholder="Qual é seu principal objetivo?"
+                                placeholder="What's your main goal?"
                                 className="w-full h-24 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#BFF549] focus:ring-2 focus:ring-[#BFF549]/20 transition-all resize-none"
                             />
                         </div>
@@ -195,7 +195,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userId, onLogout }) => {
                                 <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl">
                                     <DollarSign className="w-6 h-6 text-white" />
                                 </div>
-                                <h3 className="text-lg font-bold text-white">Renda Mensal</h3>
+                                <h3 className="text-lg font-bold text-white">Monthly Income</h3>
                             </div>
                             <div className="relative">
                                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl">$</span>
@@ -223,7 +223,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userId, onLogout }) => {
                                 <div className="p-3 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl">
                                     <Users className="w-6 h-6 text-white" />
                                 </div>
-                                <h3 className="text-lg font-bold text-white">Cursos Ativos</h3>
+                                <h3 className="text-lg font-bold text-white">Active Clients</h3>
                             </div>
                             <input
                                 type="number"
@@ -250,7 +250,7 @@ const Dashboard: React.FC<DashboardProps> = ({ userId, onLogout }) => {
                     >
                         <span className="relative z-10 flex items-center gap-3">
                             <Save className="w-6 h-6" />
-                            {isSaving ? 'Salvando...' : 'Salvar Alterações'}
+                            {isSaving ? 'Saving...' : 'Save Changes'}
                         </span>
                         <div className="absolute inset-0 bg-gradient-to-r from-white to-[#BFF549] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                     </button>
@@ -278,25 +278,25 @@ const Dashboard: React.FC<DashboardProps> = ({ userId, onLogout }) => {
                 >
                     <div className="flex items-center gap-3 mb-6">
                         <TrendingUp className="w-6 h-6 text-[#BFF549]" />
-                        <h3 className="text-2xl font-black text-white">Seu Progresso</h3>
+                        <h3 className="text-2xl font-black text-white">Your Progress</h3>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div className="text-center">
                             <p className="text-4xl font-black text-[#BFF549] mb-2">{clients || '0'}</p>
-                            <p className="text-gray-400">Cursos Ativos</p>
+                            <p className="text-gray-400">Active Clients</p>
                         </div>
                         <div className="text-center">
                             <p className="text-4xl font-black text-green-400 mb-2">
-                                R${income ? parseFloat(income).toLocaleString() : '0'}
+                                ${income ? parseFloat(income).toLocaleString() : '0'}
                             </p>
-                            <p className="text-gray-400">Renda Mensal</p>
+                            <p className="text-gray-400">Monthly Revenue</p>
                         </div>
                         <div className="text-center">
                             <p className="text-4xl font-black text-purple-400 mb-2">
                                 {goal ? '🎯' : '—'}
                             </p>
-                            <p className="text-gray-400">Objetivo Definido</p>
+                            <p className="text-gray-400">Goal Set</p>
                         </div>
                     </div>
                 </motion.div>

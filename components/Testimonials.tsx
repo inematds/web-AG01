@@ -5,30 +5,30 @@ import { Star } from 'lucide-react';
 
 const testimonials = [
   {
-    name: "Lucas Mendes",
-    role: "Desenvolvedor Full Stack",
-    content: "A comunidade INEMA mudou minha visão sobre IA. Em 3 meses, aprendi mais do que em anos sozinho. O networking é incrível!",
+    name: "Alex Rivera",
+    role: "CEO of TechStream",
+    content: "We saw a 140% lift in conversions within the first 30 days. The psychological hooks are absolutely real.",
     avatar: "https://picsum.photos/100/100?random=1",
     rating: 5
   },
   {
-    name: "Ana Carolina",
-    role: "Empreendedora Digital",
-    content: "Os jogos educativos são viciantes! Aprendo enquanto me divirto. A metodologia é única e realmente funciona.",
+    name: "Sarah Chen",
+    role: "Founder of GlowUp",
+    content: "The most beautiful website I've ever owned. But more importantly, it actually makes me money while I sleep.",
     avatar: "https://picsum.photos/100/100?random=2",
     rating: 5
   },
   {
-    name: "Pedro Henrique",
-    role: "Estudante de Engenharia",
-    content: "As mentorias são incríveis. Recebi orientação personalizada que me ajudou a direcionar minha carreira para IA.",
+    name: "Jameson Blake",
+    role: "VP Marketing, Velocity",
+    content: "Their process is elite. They understood our enterprise needs and delivered a high-converting masterpiece.",
     avatar: "https://picsum.photos/100/100?random=3",
     rating: 5
   },
   {
-    name: "Mariana Santos",
-    role: "Profissional de Marketing",
-    content: "Mesmo sem background técnico, consegui entender IA e aplicar no meu trabalho. A comunidade acolhe todos os níveis.",
+    name: "Elena Rodriguez",
+    role: "CMO, FutureScale",
+    content: "A truly scientific approach to design. Every pixel has a purpose. The results speak for themselves.",
     avatar: "https://picsum.photos/100/100?random=4",
     rating: 5
   }

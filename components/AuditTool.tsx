@@ -40,11 +40,11 @@ const AuditTool: React.FC = () => {
               viewport={{ once: true }}
             >
               <h2 className="text-5xl md:text-[84px] font-black leading-[0.9] tracking-tighter mb-8 uppercase">
-                DESCUBRA SEU <span className="text-transparent border-white/20 [-webkit-text-stroke:1px_white]">POTENCIAL</span> <br />
-                <span className="text-[#BFF549]">COM IA</span>
+                FREE AI <span className="text-transparent border-white/20 [-webkit-text-stroke:1px_white]">CONVERSION</span> <br />
+                <span className="text-[#BFF549]">CRITIQUE</span>
               </h2>
               <p className="text-xl md:text-2xl text-[#99A1AF] font-light max-w-3xl mx-auto">
-                Descreva seus objetivos ou área de interesse. Nossa IA analisa seu perfil e sugere o melhor caminho de aprendizado.
+                Paste your URL or explain your funnel. Our AI CRO expert identifies profit leaks in under 10 seconds.
               </p>
             </motion.div>
           </div>
@@ -57,7 +57,7 @@ const AuditTool: React.FC = () => {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Ex: Quero aprender sobre IA para melhorar minha carreira..."
+                placeholder="Ex: My Shopify store landing page isn't converting traffic..."
                 className="flex-1 bg-transparent border-none rounded-[32px] px-8 py-6 text-white placeholder:text-white/30 focus:ring-0 outline-none text-xl focus:placeholder:text-white/50 transition-all"
               />
               <button
@@ -67,7 +67,7 @@ const AuditTool: React.FC = () => {
                 {isLoading ? (
                   <Loader2 className="w-7 h-7 animate-spin" />
                 ) : (
-                  <>Analisar Agora</>
+                  <>Analyze Now</>
                 )}
               </button>
             </form>
@@ -94,17 +94,17 @@ const AuditTool: React.FC = () => {
                     </svg>
                     <div className="absolute inset-0 flex flex-col items-center justify-center">
                       <span className="text-4xl font-black">{result.score}</span>
-                      <span className="text-[10px] uppercase font-bold text-[#99A1AF] tracking-widest">Pontuação</span>
+                      <span className="text-[10px] uppercase font-bold text-[#99A1AF] tracking-widest">Score</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 px-4 py-1.5 bg-[#BFF549]/10 text-[#BFF549] rounded-full text-xs font-bold uppercase tracking-widest">
-                    <ShieldAlert className="w-3 h-3" /> Potencial Encontrado
+                    <ShieldAlert className="w-3 h-3" /> Potential Found
                   </div>
                 </div>
 
                 <div className="lg:col-span-8 space-y-8">
                   <div className="bg-white/[0.03] border border-white/10 p-10 rounded-[40px] backdrop-blur-xl">
-                    <h4 className="text-[#BFF549] font-bold uppercase text-xs tracking-widest mb-6">Análise Especializada</h4>
+                    <h4 className="text-[#BFF549] font-bold uppercase text-xs tracking-widest mb-6">Expert Summary</h4>
                     <p className="text-2xl text-white/90 font-light leading-relaxed">
                       "{result.critique}"
                     </p>

@@ -5,42 +5,42 @@ import { Zap, Check } from 'lucide-react';
 
 const pricingPlans = [
   {
-    name: "Básico",
-    subtitle: "Para quem está começando",
-    price: "Grátis",
+    name: "Starter",
+    subtitle: "For emerging brands",
+    price: "4,500",
     features: [
-      "Acesso à Comunidade no Telegram",
-      "Jogos Educativos Básicos",
-      "Conteúdo Introdutório de IA",
-      "Suporte da Comunidade"
+      "Custom Landing Page Design",
+      "Mobile-First Optimization",
+      "Basic SEO Implementation",
+      "5-Day Turnaround"
     ],
     highlight: false,
     color: "bg-blue-600"
   },
   {
-    name: "Premium",
-    subtitle: "Escolha mais popular",
-    price: "97",
+    name: "Growth",
+    subtitle: "Most popular choice",
+    price: "8,500",
     features: [
-      "Tudo do Plano Básico",
-      "Cursos Completos de IA e Robótica",
-      "Mentorias em Grupo",
-      "Acesso a Todos os Jogos EAI",
-      "Certificados de Conclusão"
+      "Full 5-Page Website",
+      "Advanced CRO Strategy",
+      "CMS Integration",
+      "Interactive Motion Effects",
+      "Copywriting Assistance"
     ],
     highlight: true,
     color: "bg-[#BFF549]"
   },
   {
-    name: "VIP",
-    subtitle: "Para quem quer acelerar",
-    price: "297",
+    name: "Enterprise",
+    subtitle: "For market leaders",
+    price: "15,000+",
     features: [
-      "Tudo do Plano Premium",
-      "Mentoria Individual",
-      "Projetos Práticos com IA",
-      "Networking Exclusivo",
-      "Acesso Vitalício"
+      "Complete Design System",
+      "Headless Architecture",
+      "A/B Testing Setup",
+      "Priority 24/7 Support",
+      "Monthly Conversion Audits"
     ],
     highlight: false,
     color: "bg-purple-600"
@@ -59,10 +59,10 @@ const Pricing: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-7xl font-black tracking-tighter text-white mb-6 uppercase"
           >
-            INVISTA NO SEU <span className="text-[#BFF549]">FUTURO</span>
+            INVEST IN <span className="text-[#BFF549]">ROI</span>
           </motion.h2>
           <p className="text-[#99A1AF] text-xl font-light max-w-2xl mx-auto px-6 md:px-0">
-            Planos transparentes e acessíveis. Sem taxas ocultas. Apenas resultados.
+            Clear, transparent pricing. No hidden fees. Just results.
           </p>
         </div>
 
@@ -81,7 +81,7 @@ const Pricing: React.FC = () => {
             >
               {plan.highlight && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-[#BFF549] text-black text-xs font-bold uppercase tracking-widest rounded-full">
-                  Recomendado
+                  Recommended
                 </div>
               )}
 
@@ -91,9 +91,8 @@ const Pricing: React.FC = () => {
               </div>
 
               <div className="mb-10 flex items-baseline gap-1">
-                {plan.price !== "Grátis" && <span className="text-sm align-top text-[#99A1AF]">R$</span>}
+                <span className="text-sm align-top text-[#99A1AF]">$</span>
                 <span className="text-5xl font-black tracking-tight">{plan.price}</span>
-                {plan.price !== "Grátis" && <span className="text-sm text-[#99A1AF]">/mês</span>}
               </div>
 
               <div className="space-y-5 mb-12 flex-1">
@@ -111,7 +110,7 @@ const Pricing: React.FC = () => {
                 ? 'bg-[#BFF549] text-black hover:bg-white'
                 : 'bg-white/10 text-white hover:bg-white hover:text-black'
                 }`}>
-                Escolher {plan.name}
+                Choose {plan.name}
               </button>
             </motion.div>
           ))}

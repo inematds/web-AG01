@@ -12,10 +12,10 @@ const Footer: React.FC = () => {
               <div className="w-8 h-8 bg-[#BFF549] rounded-lg flex items-center justify-center">
                 <Zap className="text-black w-5 h-5" fill="currentColor" />
               </div>
-              <span className="text-lg font-black tracking-tighter text-white uppercase">INEMA.CLUB</span>
+              <span className="text-lg font-black tracking-tighter text-white uppercase">VOLTFLOW</span>
             </div>
             <p className="text-[#99A1AF] font-light leading-relaxed mb-8">
-              Preparamos você para o futuro com IA e Robótica. Uma comunidade de pessoas que acreditam no poder do aprendizado e da inovação.
+              We help elite businesses dominate their market through performance-first web design. No fluff. Just ROI.
             </p>
             <div className="flex gap-4">
               {[Twitter, Github, Linkedin, Instagram].map((Icon, i) => (
@@ -28,16 +28,16 @@ const Footer: React.FC = () => {
 
           {[
             {
-              title: "Plataformas",
-              links: ["INEMA.Club", "EAI Jogos", "INEMA.VIP", "Telegram"]
+              title: "Expertise",
+              links: ["Neuro-Design", "SaaS Growth", "E-commerce", "Conversion Audits"]
             },
             {
-              title: "Comunidade",
-              links: ["Sobre Nós", "Nosso Método", "Depoimentos", "Blog"]
+              title: "Agency",
+              links: ["Case Studies", "Our Process", "Careers", "Blog"]
             },
             {
-              title: "Suporte",
-              links: ["Fale Conosco", "Política de Privacidade", "Termos de Uso", "Central de Ajuda"]
+              title: "Support",
+              links: ["Contact Us", "Privacy Policy", "Terms of Service", "Help Center"]
             }
           ].map((col, i) => (
             <div key={i}>
@@ -56,8 +56,8 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 pt-8 border-t border-white/5 text-[#99A1AF] text-sm">
-          <p>© 2026 INEMA.Club. Todos os direitos reservados.</p>
-          <p>Feito com ❤️ para o futuro.</p>
+          <p>© 2026 VoltFlow Design Agency. All rights reserved.</p>
+          <p>Built with ❤️ for performance.</p>
         </div>
       </div>
     </footer>

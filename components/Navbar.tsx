@@ -34,17 +34,17 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, userId, onLoginClick, onDas
               <Zap className={`text-black transition-all ${isScrolled ? 'w-4 h-4' : 'w-6 h-6'}`} fill="currentColor" />
             </div>
             <span className={`font-black tracking-tighter text-white transition-all ${isScrolled ? 'text-lg' : 'text-xl'
-              }`}>INEMA.CLUB</span>
+              }`}>VOLTFLOW</span>
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            {[{label: 'Expertise', href: 'expertise'}, {label: 'Método', href: 'process'}, {label: 'Diagnóstico', href: 'audit'}].map((item) => (
+            {['Expertise', 'Process', 'Audit'].map((item) => (
               <a
-                key={item.href}
-                href={`#${item.href}`}
+                key={item}
+                href={`#${item.toLowerCase()}`}
                 className="text-sm font-medium text-[#99A1AF] hover:text-[#BFF549] transition-colors relative group"
               >
-                {item.label}
+                {item}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#BFF549] transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
@@ -70,7 +70,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, userId, onLoginClick, onDas
 
             <button className={`bg-white text-black font-bold text-sm rounded-full hover:bg-[#BFF549] transition-all transform active:scale-95 ${isScrolled ? 'px-4 py-2' : 'px-6 py-2.5'
               }`}>
-              Entrar na Comunidade
+              Book Strategy
             </button>
           </div>
 
@@ -103,17 +103,17 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, userId, onLoginClick, onDas
             className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl md:hidden"
           >
             <div className="flex flex-col items-center justify-center h-full gap-8 px-6">
-              {[{label: 'Expertise', href: 'expertise'}, {label: 'Método', href: 'process'}, {label: 'Diagnóstico', href: 'audit'}].map((item, index) => (
+              {['Expertise', 'Process', 'Audit'].map((item, index) => (
                 <motion.a
-                  key={item.href}
+                  key={item}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  href={`#${item.href}`}
+                  href={`#${item.toLowerCase()}`}
                   onClick={closeMobileMenu}
                   className="text-3xl font-bold text-white hover:text-[#BFF549] transition-colors"
                 >
-                  {item.label}
+                  {item}
                 </motion.a>
               ))}
 
@@ -152,7 +152,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, userId, onLoginClick, onDas
                 onClick={closeMobileMenu}
                 className="mt-4 px-10 py-4 bg-[#BFF549] text-black font-bold text-lg rounded-full hover:bg-white transition-all"
               >
-                Entrar na Comunidade
+                Book Strategy
               </motion.button>
             </div>
           </motion.div>
