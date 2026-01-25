@@ -18,7 +18,7 @@ const Features: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               className="inline-block text-[#BFF549] font-bold tracking-widest uppercase mb-4 text-sm"
             >
-              Our Expertise
+              Nossa Expertise
             </motion.span>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -26,8 +26,8 @@ const Features: React.FC = () => {
               transition={{ delay: 0.1 }}
               className="text-4xl md:text-7xl font-black tracking-tighter text-white"
             >
-              SCIENTIFIC <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">PRECISION.</span>
+              METODOLOGIA <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">INEMA.</span>
             </motion.h2>
           </div>
           <motion.p
@@ -36,7 +36,7 @@ const Features: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="text-xl text-[#99A1AF] max-w-lg font-light leading-relaxed"
           >
-            We adhere to a rigorous, data-backed design methodology. No guesswork, just results.
+            Aprendizado acelerado com foco em resultados. Preparamos voce para liderar no mundo da tecnologia.
           </motion.p>
         </div>
 
@@ -52,9 +52,9 @@ const Features: React.FC = () => {
               <div className="w-16 h-16 bg-[#BFF549] rounded-2xl flex items-center justify-center mb-8 rotate-3 group-hover:rotate-12 transition-transform duration-500">
                 <BarChart3 className="w-8 h-8 text-black" />
               </div>
-              <h3 className="text-4xl font-bold mb-6">Velocity-First <br />Architecture</h3>
+              <h3 className="text-4xl font-bold mb-6">Aprendizado <br />Acelerado</h3>
               <p className="text-lg text-[#99A1AF] max-w-md">
-                We engineer sites that load in sub-100ms. Speed isn't just a feature; it's the foundation of conversion. Google loves it, users demand it.
+                Nossa metodologia combina teoria e pratica para voce aprender IA e Robotica de forma rapida e eficiente. Jogos educativos, projetos reais e mentorias exclusivas.
               </p>
             </div>
 
@@ -83,9 +83,9 @@ const Features: React.FC = () => {
               <ArrowUpRight className="w-8 h-8 text-[#BFF549]" />
             </div>
             <Layout className="w-10 h-10 text-white mb-6" />
-            <h3 className="text-2xl font-bold mb-3">Neuro-Design</h3>
+            <h3 className="text-2xl font-bold mb-3">Comunidade Ativa</h3>
             <p className="text-sm text-[#99A1AF]">
-              Eye-tracking data guides every pixel placement.
+              Conecte-se com outros alunos e mentores no INEMA.VIP.
             </p>
           </motion.div>
 
@@ -96,9 +96,9 @@ const Features: React.FC = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             <Target className="w-10 h-10 text-purple-400 mb-6" />
-            <h3 className="text-2xl font-bold mb-3">Conversion CRO</h3>
+            <h3 className="text-2xl font-bold mb-3">Mentorias Exclusivas</h3>
             <p className="text-sm text-[#99A1AF]">
-              Frictionless funnels that turn visitors into revenue.
+              Acompanhamento personalizado com especialistas em IA.
             </p>
           </motion.div>
         </div>
@@ -107,15 +107,15 @@ const Features: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-6">
           <motion.div whileHover={{ y: -5 }} className="bg-white/[0.02] border border-white/5 rounded-3xl p-6 flex items-center gap-4">
             <div className="p-3 bg-white/5 rounded-xl"><Layers className="w-6 h-6 text-[#BFF549]" /></div>
-            <div><h4 className="font-bold">Brand Authority</h4><p className="text-xs text-gray-500">Premium Aesthetics</p></div>
+            <div><h4 className="font-bold">Jogos Educativos</h4><p className="text-xs text-gray-500">Plataforma EAI</p></div>
           </motion.div>
           <motion.div whileHover={{ y: -5 }} className="bg-white/[0.02] border border-white/5 rounded-3xl p-6 flex items-center gap-4">
             <div className="p-3 bg-white/5 rounded-xl"><MousePointer2 className="w-6 h-6 text-blue-400" /></div>
-            <div><h4 className="font-bold">Behavioral Triggers</h4><p className="text-xs text-gray-500">Intent Response</p></div>
+            <div><h4 className="font-bold">Projetos Praticos</h4><p className="text-xs text-gray-500">Aprenda Fazendo</p></div>
           </motion.div>
           <motion.div whileHover={{ y: -5 }} className="bg-white/[0.02] border border-white/5 rounded-3xl p-6 flex items-center gap-4">
             <div className="p-3 bg-white/5 rounded-xl"><Zap className="w-6 h-6 text-yellow-400" /></div>
-            <div><h4 className="font-bold">Instant Iteration</h4><p className="text-xs text-gray-500">Rapid Testing</p></div>
+            <div><h4 className="font-bold">Certificados</h4><p className="text-xs text-gray-500">Reconhecimento</p></div>
           </motion.div>
         </div>
       </div>

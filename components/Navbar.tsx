@@ -34,17 +34,21 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, userId, onLoginClick, onDas
               <Zap className={`text-black transition-all ${isScrolled ? 'w-4 h-4' : 'w-6 h-6'}`} fill="currentColor" />
             </div>
             <span className={`font-black tracking-tighter text-white transition-all ${isScrolled ? 'text-lg' : 'text-xl'
-              }`}>VOLTFLOW</span>
+              }`}>INEMA.CLUB</span>
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            {['Expertise', 'Process', 'Audit'].map((item) => (
+            {[
+              { label: 'Expertise', href: 'expertise' },
+              { label: 'Metodo', href: 'process' },
+              { label: 'Diagnostico', href: 'audit' }
+            ].map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.href}
+                href={`#${item.href}`}
                 className="text-sm font-medium text-[#99A1AF] hover:text-[#BFF549] transition-colors relative group"
               >
-                {item}
+                {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#BFF549] transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
@@ -55,7 +59,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, userId, onLoginClick, onDas
                 onClick={onDashboardClick}
                 className="text-sm font-medium text-[#99A1AF] hover:text-[#BFF549] transition-colors relative group"
               >
-                Dashboard
+                Painel
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#BFF549] transition-all duration-300 group-hover:w-full"></span>
               </button>
             ) : (
@@ -63,14 +67,14 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, userId, onLoginClick, onDas
                 onClick={onLoginClick}
                 className="text-sm font-medium text-[#99A1AF] hover:text-[#BFF549] transition-colors relative group"
               >
-                Login
+                Entrar
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#BFF549] transition-all duration-300 group-hover:w-full"></span>
               </button>
             )}
 
             <button className={`bg-white text-black font-bold text-sm rounded-full hover:bg-[#BFF549] transition-all transform active:scale-95 ${isScrolled ? 'px-4 py-2' : 'px-6 py-2.5'
               }`}>
-              Book Strategy
+              Comece Agora
             </button>
           </div>
 
@@ -103,17 +107,21 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, userId, onLoginClick, onDas
             className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl md:hidden"
           >
             <div className="flex flex-col items-center justify-center h-full gap-8 px-6">
-              {['Expertise', 'Process', 'Audit'].map((item, index) => (
+              {[
+                { label: 'Expertise', href: 'expertise' },
+                { label: 'Metodo', href: 'process' },
+                { label: 'Diagnostico', href: 'audit' }
+              ].map((item, index) => (
                 <motion.a
-                  key={item}
+                  key={item.href}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  href={`#${item.toLowerCase()}`}
+                  href={`#${item.href}`}
                   onClick={closeMobileMenu}
                   className="text-3xl font-bold text-white hover:text-[#BFF549] transition-colors"
                 >
-                  {item}
+                  {item.label}
                 </motion.a>
               ))}
 
@@ -128,7 +136,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, userId, onLoginClick, onDas
                   }}
                   className="text-3xl font-bold text-white hover:text-[#BFF549] transition-colors"
                 >
-                  Dashboard
+                  Painel
                 </motion.button>
               ) : (
                 <motion.button
@@ -141,7 +149,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, userId, onLoginClick, onDas
                   }}
                   className="text-3xl font-bold text-white hover:text-[#BFF549] transition-colors"
                 >
-                  Login
+                  Entrar
                 </motion.button>
               )}
 
@@ -152,7 +160,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled, userId, onLoginClick, onDas
                 onClick={closeMobileMenu}
                 className="mt-4 px-10 py-4 bg-[#BFF549] text-black font-bold text-lg rounded-full hover:bg-white transition-all"
               >
-                Book Strategy
+                Comece Agora
               </motion.button>
             </div>
           </motion.div>

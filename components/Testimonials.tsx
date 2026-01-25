@@ -5,30 +5,30 @@ import { Star } from 'lucide-react';
 
 const testimonials = [
   {
-    name: "Alex Rivera",
-    role: "CEO of TechStream",
-    content: "We saw a 140% lift in conversions within the first 30 days. The psychological hooks are absolutely real.",
+    name: "Lucas Mendes",
+    role: "Estudante de Engenharia",
+    content: "A plataforma EAI transformou minha forma de aprender. Os jogos educativos tornaram IA algo acessivel e divertido.",
     avatar: "https://picsum.photos/100/100?random=1",
     rating: 5
   },
   {
-    name: "Sarah Chen",
-    role: "Founder of GlowUp",
-    content: "The most beautiful website I've ever owned. But more importantly, it actually makes me money while I sleep.",
+    name: "Ana Carolina",
+    role: "Empreendedora Digital",
+    content: "Comecei do zero e hoje ja uso IA no meu negocio. A metodologia INEMA realmente funciona!",
     avatar: "https://picsum.photos/100/100?random=2",
     rating: 5
   },
   {
-    name: "Jameson Blake",
-    role: "VP Marketing, Velocity",
-    content: "Their process is elite. They understood our enterprise needs and delivered a high-converting masterpiece.",
+    name: "Pedro Henrique",
+    role: "Desenvolvedor Junior",
+    content: "As mentorias do INEMA.VIP aceleraram minha carreira. Em 3 meses consegui minha primeira vaga em IA.",
     avatar: "https://picsum.photos/100/100?random=3",
     rating: 5
   },
   {
-    name: "Elena Rodriguez",
-    role: "CMO, FutureScale",
-    content: "A truly scientific approach to design. Every pixel has a purpose. The results speak for themselves.",
+    name: "Mariana Santos",
+    role: "Professora de Tecnologia",
+    content: "Uso a plataforma com meus alunos. O conteudo e didatico e os resultados sao visiveis.",
     avatar: "https://picsum.photos/100/100?random=4",
     rating: 5
   }

@@ -109,10 +109,10 @@ const AuthForm: React.FC<AuthFormProps> = ({ onAuthSuccess }) => {
                     </motion.div>
 
                     <h2 className="text-5xl font-black mb-4 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
-                        {isLoginMode ? 'Welcome Back' : 'Get Started Today'}
+                        {isLoginMode ? 'Bem-vindo de Volta' : 'Comece Agora'}
                     </h2>
                     <p className="text-xl text-gray-400">
-                        {isLoginMode ? 'Enter your credentials to access your dashboard' : 'Create your account and unlock your personalized dashboard'}
+                        {isLoginMode ? 'Entre com suas credenciais para acessar seu painel' : 'Crie sua conta e desbloqueie seu painel personalizado'}
                     </p>
                 </div>
 
@@ -136,7 +136,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ onAuthSuccess }) => {
                     {/* Email Input */}
                     <div className="mb-6">
                         <label className="block text-sm font-bold text-gray-300 mb-2 uppercase tracking-wider">
-                            Email Address
+                            Endereco de Email
                         </label>
                         <div className="relative group">
                             <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#BFF549] transition-colors" />
@@ -154,7 +154,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ onAuthSuccess }) => {
                     {/* Password Input */}
                     <div className="mb-6">
                         <label className="block text-sm font-bold text-gray-300 mb-2 uppercase tracking-wider">
-                            Password
+                            Senha
                         </label>
                         <div className="relative group">
                             <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#BFF549] transition-colors" />
@@ -173,7 +173,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ onAuthSuccess }) => {
                     {!isLoginMode && (
                         <div className="mb-6">
                             <label className="block text-sm font-bold text-gray-300 mb-2 uppercase tracking-wider">
-                                Full Name
+                                Nome Completo
                             </label>
                             <div className="relative group">
                                 <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#BFF549] transition-colors" />
@@ -183,7 +183,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ onAuthSuccess }) => {
                                     onChange={(e) => setName(e.target.value)}
                                     required
                                     className="w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#BFF549] focus:ring-2 focus:ring-[#BFF549]/20 transition-all"
-                                    placeholder="John Doe"
+                                    placeholder="Seu nome"
                                 />
                             </div>
                         </div>
@@ -193,7 +193,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ onAuthSuccess }) => {
                     {!isLoginMode && (
                         <div className="mb-8">
                             <label className="block text-sm font-bold text-gray-300 mb-2 uppercase tracking-wider">
-                                Website <span className="text-gray-500 font-normal">(Optional)</span>
+                                Website <span className="text-gray-500 font-normal">(Opcional)</span>
                             </label>
                             <div className="relative group">
                                 <Globe className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#BFF549] transition-colors" />
@@ -215,7 +215,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ onAuthSuccess }) => {
                         className="group relative w-full py-5 bg-gradient-to-r from-[#BFF549] to-[#FACC15] text-black font-black text-lg rounded-xl overflow-hidden transition-all hover:shadow-[0_0_60px_rgba(191,245,73,0.5)] hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         <span className="relative z-10 flex items-center justify-center gap-3">
-                            {isLoading ? 'Loading...' : (isLoginMode ? 'Login' : 'Access Dashboard')}
+                            {isLoading ? 'Carregando...' : (isLoginMode ? 'Entrar' : 'Acessar Painel')}
                             <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
                         </span>
                         <div className="absolute inset-0 bg-gradient-to-r from-white to-[#BFF549] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
@@ -225,24 +225,24 @@ const AuthForm: React.FC<AuthFormProps> = ({ onAuthSuccess }) => {
                     <p className="mt-6 text-center text-sm text-gray-400">
                         {isLoginMode ? (
                             <>
-                                New here?{' '}
+                                Novo por aqui?{' '}
                                 <button
                                     type="button"
                                     onClick={() => setIsLoginMode(false)}
                                     className="text-[#BFF549] font-bold hover:underline"
                                 >
-                                    Create an account
+                                    Criar uma conta
                                 </button>
                             </>
                         ) : (
                             <>
-                                Already have an account?{' '}
+                                Ja tem uma conta?{' '}
                                 <button
                                     type="button"
                                     onClick={() => setIsLoginMode(true)}
                                     className="text-[#BFF549] font-bold hover:underline"
                                 >
-                                    Login
+                                    Entrar
                                 </button>
                             </>
                         )}

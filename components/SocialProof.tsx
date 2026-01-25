@@ -3,8 +3,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const brands = [
-  'TechVibe', 'NexusLabs', 'Quantum', 'Elevate', 'Stellar', 'FlowState', 'Velocity',
-  'Apex', 'Zenith', 'Horizon', 'Prisma', 'Vertex'
+  'EAI Games', 'INEMA.VIP', 'Robotica', 'IA Brasil', 'TechLab', 'FutureTech', 'CodeIA',
+  'RoboEdu', 'AILearn', 'TechHub', 'DataIA', 'SmartEdu'
 ];
 
 const SocialProof: React.FC = () => {
@@ -15,7 +15,7 @@ const SocialProof: React.FC = () => {
       <div className="container mx-auto px-6 mb-12 relative z-20">
         <div className="text-center">
           <p className="text-[#99A1AF] text-sm font-bold uppercase tracking-[0.2em]">
-            Trusted by industry leaders
+            Parceiros e Comunidade
           </p>
         </div>
       </div>
