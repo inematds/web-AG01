@@ -3,8 +3,8 @@ import { GoogleGenAI, Type } from "@google/genai";
 
 // Refactored to follow @google/genai initialization and model usage guidelines
 export const analyzeConversion = async (urlOrDescription: string) => {
-  // Initialize with process.env.API_KEY directly inside the function
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  // Initialize with import.meta.env for Vite compatibility
+  const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
   
   const prompt = `
     Act as a world-class conversion rate optimization (CRO) expert. 
