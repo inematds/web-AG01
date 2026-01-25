@@ -20,11 +20,11 @@ const StickyCTA: React.FC<StickyCTAProps> = ({ isVisible }) => {
         >
           <div className="bg-[#18181B] pointer-events-auto border border-white/10 rounded-full p-2 pl-8 flex items-center gap-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl">
             <div className="hidden md:block">
-              <div className="text-white font-bold text-sm">Ready to scale?</div>
-              <div className="text-[#99A1AF] text-xs">High-converting spots filling fast</div>
+              <div className="text-white font-bold text-sm">Pronto para evoluir?</div>
+              <div className="text-[#99A1AF] text-xs">Vagas limitadas na comunidade</div>
             </div>
             <button className="px-8 py-3 bg-[#BFF549] text-black font-black rounded-full hover:bg-white transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2">
-              Get Started <ArrowRight className="w-4 h-4" />
+              Começar Agora <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </motion.div>

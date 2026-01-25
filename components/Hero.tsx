@@ -117,32 +117,32 @@ const Hero: React.FC = () => {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full border border-[#BFF549]/30 bg-[#BFF549]/5 text-[#BFF549] text-xs font-bold uppercase tracking-[0.2em] backdrop-blur-md">
             <Zap className="w-3 h-3 fill-current" />
-            Performance Optimized
+            Prepare-se para o Futuro
           </span>
 
           <h1 className="text-6xl md:text-[120px] font-black leading-[0.85] tracking-tighter mb-8 text-white mix-blend-difference">
-            WE BUILD <br />
+            CONSTRUA <br />
             <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50">
-              GORGEOUS
+              SEU
             </span> <br />
-            <span className="text-[#BFF549]">WEBSITES.</span>
+            <span className="text-[#BFF549]">FUTURO.</span>
           </h1>
 
           <p className="text-lg md:text-2xl text-[#99A1AF] max-w-2xl mx-auto mb-12 font-light leading-relaxed tracking-tight">
-            Elevating digital presence through scientific design. We don't just build sites; we engineer visual identities that convert.
+            Prepare-se para um mundo onde IA e Robótica estarão em todos os lugares. Forme seu time, desenvolva habilidades e transforme o futuro.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <div className="relative group w-auto">
               <div className="absolute inset-0 bg-[#BFF549] rounded-full blur-[20px] opacity-40 group-hover:opacity-60 transition-all duration-300 transform group-hover:scale-110" />
               <button className="relative px-12 py-6 bg-[#BFF549] text-black font-black text-xl rounded-full overflow-hidden transition-all hover:scale-[1.02] active:scale-95 z-10 flex items-center gap-3 whitespace-nowrap">
-                Start Project
+                Comece Agora
                 <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
 
             <button className="px-10 py-6 text-white font-bold text-lg rounded-full border border-white/10 hover:bg-white/5 transition-all flex items-center gap-3 backdrop-blur-sm whitespace-nowrap">
-              View Our Work
+              Conheça a Comunidade
             </button>
           </div>
 

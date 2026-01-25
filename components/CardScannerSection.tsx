@@ -7,14 +7,14 @@ const CardScannerSection: React.FC = () => {
             {/* Heading Section */}
             <div className="max-w-7xl mx-auto px-6 text-center">
                 <h2 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent leading-tight">
-                    Stop Burning Cash on
+                    Pare de Perder Tempo com
                     <br />
                     <span className="bg-gradient-to-r from-[#BFF549] via-[#FACC15] to-[#BFF549] bg-clip-text text-transparent">
-                        Bad Websites
+                        Métodos Ultrapassados
                     </span>
                 </h2>
                 <p className="text-xl md:text-2xl text-gray-400 font-medium max-w-3xl mx-auto">
-                    We scan your business and reveal the hidden code to high-converting websites—without the expensive trial and error.
+                    Analisamos seu perfil e revelamos o caminho mais eficiente para dominar IA e Robótica — sem tentativa e erro.
                 </p>
             </div>
 
