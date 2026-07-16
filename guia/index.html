@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>web-AG01 — landing INEMA.Club em modo demo</title>
+<meta name="description" content="Protótipo React/Vite da landing do INEMA.Club: apresentação, diagnóstico de IA (mockado) e planos, rodando 100% em modo demo, sem backend configurado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0c10; --bg2:#14141b; --card:#16161e; --line:#272730;
+    --txt:#e9e9ee; --mut:#9a9aa6; --amb:#E2A23B; --amb2:#f0c070; --sky:#38bdf8; --pro:#cbd5e1;
+    color-scheme:dark;
+  }
+  body.light{
+    --bg:#f6f7f9; --bg2:#eceef2; --card:#ffffff; --line:#e1e3ea;
+    --txt:#1a1a22; --mut:#5b5b68; --amb:#b9791d; --amb2:#a16207; --sky:#0369a1; --pro:#b45309;
+    color-scheme:light;
+  }
+  body.light .hero .glow{opacity:.5}
+  body.light pre{background:#0e0e14;color:#d6d6e0}
+  body.light pre .c{color:#8a8a98}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Sora,sans-serif;line-height:1.15;margin:0}
+  a{color:var(--amb);text-decoration:none}
+  code,pre{font-family:"JetBrains Mono",monospace}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  .mut{color:var(--mut)} .amb{color:var(--amb)}
+  .chip{display:inline-block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amb);font-weight:600;font-family:Sora}
+  nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);background:rgba(12,12,16,.78);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+  nav .brand{display:flex;align-items:center;gap:8px;font-family:Sora;font-weight:800;letter-spacing:-.02em;color:var(--amb)}
+  nav .brand .emoji{font-size:1.25rem}
+  nav .sep{color:var(--mut);opacity:.45}
+  nav .inema{color:var(--sky);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .inema:hover{filter:brightness(1.15)}
+  nav .pro{color:var(--pro);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .pro:hover{filter:brightness(1.15)}
+  nav .clubpro{display:inline-flex;align-items:center;gap:6px}
+  nav .links{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:.92rem}
+  nav .links a.sec{color:var(--mut)} nav .links a.sec:hover{color:var(--txt)}
+  .tgl{background:var(--bg2);border:1px solid var(--line);color:var(--txt);width:38px;height:38px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem}
+  .tgl:hover{border-color:var(--amb)}
+  .btn{display:inline-block;background:var(--amb);color:#1a1206;font-weight:600;padding:.6em 1.05em;border-radius:10px;font-family:Sora}
+  .btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+  @media(max-width:760px){nav .links a.sec{display:none}}
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .glow{position:absolute;inset:-40% -20% auto auto;width:70%;height:600px;background:radial-gradient(closest-side,rgba(226,162,59,.22),transparent 70%);pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:74px 22px}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;letter-spacing:-.025em}
+  .hero p.lead{font-size:1.18rem;color:var(--mut);margin:1.1em 0 1.6em;max-width:34ch}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero figure{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000}
+  .hero figure img{width:100%;display:block}
+  @media(max-width:780px){.hero .wrap{grid-template-columns:1fr;padding:48px 22px}}
+  section{padding:62px 0;border-bottom:1px solid var(--line)}
+  section h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em}
+  section .sub{color:var(--mut);margin:.6em 0 2em;max-width:62ch}
+  .grid{display:grid;gap:16px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:820px){.g3,.g4{grid-template-columns:1fr 1fr}}
+  @media(max-width:540px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .card h3{font-size:1.05rem;margin-bottom:.4em}
+  .card p{color:var(--mut);font-size:.92rem;margin:0}
+  .num{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border-radius:8px;background:rgba(226,162,59,.14);color:var(--amb);font-family:Sora;font-weight:800;font-size:.9rem;margin-bottom:.7em}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+  .flow span{background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:.45em .9em;font-size:.85rem;font-family:Sora;font-weight:600}
+  .flow .arr{color:var(--amb);border:none;background:none;padding:0 .1em}
+  pre{background:#0a0a0e;border:1px solid var(--line);border-radius:12px;padding:16px 18px;overflow:auto;font-size:.86rem;line-height:1.6;color:#d6d6e0}
+  pre .c{color:#6f6f7c} pre .k{color:var(--amb2)} pre .s{color:#9ece6a}
+  .step{display:grid;grid-template-columns:46px 1fr;gap:16px;margin-bottom:26px}
+  .step .b{width:46px;height:46px;border-radius:12px;background:var(--amb);color:#1a1206;font-family:Sora;font-weight:800;font-size:1.25rem;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:1.12rem;margin-bottom:.3em}
+  .step p{color:var(--mut);margin:.2em 0 .7em}
+  .ex{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:680px){.ex{grid-template-columns:1fr}}
+  .ex figure{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  .ex figure img{width:100%;display:block}
+  .ex figcaption{padding:12px 14px;font-size:.88rem;color:var(--mut);background:var(--card)}
+  .phase{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .phase:last-child{border:none}
+  .phase .tag{flex:0 0 92px;font-family:Sora;font-weight:800;color:var(--amb)}
+  .phase .d strong{display:block;margin-bottom:.2em}
+  .phase .d span{color:var(--mut);font-size:.92rem}
+  footer{padding:46px 0;text-align:center;color:var(--mut);font-size:.9rem}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3em .8em;font-size:.78rem;color:var(--mut);margin:0 4px}
+  .warn{background:var(--card);border:1px solid var(--amb);border-radius:14px;padding:18px 20px;margin:0 0 2em}
+  .warn strong{color:var(--amb)}
+  table{width:100%;border-collapse:collapse;font-size:.9rem}
+  table th,table td{text-align:left;padding:.55em .7em;border-bottom:1px solid var(--line)}
+  table th{color:var(--mut);font-family:Sora;font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="#top"><span class="emoji">🧪</span> web-AG01</a>
+  <span class="sep">|</span>
+  <span class="clubpro">
+    <a class="inema" href="https://inema.club" target="_blank" rel="noopener">INEMA.CLUB</a>
+    <span class="sep">-</span>
+    <a class="pro" href="https://inema.pro" target="_blank" rel="noopener">PRO</a>
+  </span>
+  <div class="links">
+    <a class="sec" href="#oque">O que é</a>
+    <a class="sec" href="#fluxo">Como funciona</a>
+    <a class="sec" href="#guia">Guia de uso</a>
+    <a class="sec" href="#exemplos">Modo demo x produção</a>
+    <a class="sec" href="#roadmap">Roadmap</a>
+    <button class="tgl" id="themeToggle" aria-label="Alternar tema" title="Alternar tema">🌙</button>
+    <a class="btn" href="https://github.com/inematds/web-AG01" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div>
+      <span class="chip">Protótipo · React + Vite</span>
+      <h1>Landing do INEMA.Club rodando em <span class="amb">modo demo</span></h1>
+      <p class="lead">web-AG01 é o experimento de site do INEMA.Club: apresentação, diagnóstico de IA e planos — tudo funcionando sem backend configurado, pronto pra virar produção quando ligar Gemini e Supabase.</p>
+      <div class="cta">
+        <a class="btn" href="#guia">Começar o guia</a>
+        <a class="btn ghost" href="https://github.com/inematds/web-AG01" target="_blank" rel="noopener">Ver no GitHub</a>
+      </div>
+    </div>
+    <figure><img src="assets/hero.png" alt="Ilustração abstrata representando a landing INEMA.Club em modo demo"></figure>
+  </div>
+</header>
+
+<section id="oque"><div class="wrap">
+  <span class="chip">O que é</span>
+  <h2>Um protótipo, não o portal oficial</h2>
+  <p class="sub">web-AG01 é um experimento interno: uma landing page para a plataforma educacional INEMA.Club (foco em IA e Robótica), construída em React/Vite. Não é o inema.club nem o pro.inema.club — é um site separado, testando design e fluxo de conversão, hoje publicado em modo demo no Vercel.</p>
+  <div class="grid g3">
+    <div class="card"><h3>🎨 Landing completa</h3><p>Hero, metodologia, depoimentos, planos e rodapé prontos — a apresentação da proposta do INEMA.Club (aprendizado acelerado, jogos educativos EAI, comunidade INEMA.VIP, mentorias e certificados).</p></div>
+    <div class="card"><h3>🤖 Diagnóstico de IA (mockado)</h3><p>Ferramenta de "auditoria" que simula uma análise de potencial com IA. Em modo demo devolve dados de exemplo; com uma chave do Gemini, chama a API de verdade.</p></div>
+    <div class="card"><h3>💳 Planos e preços</h3><p>Seção de pricing ativa com três níveis — Básico (grátis), Premium (R$97) e VIP (R$297) — e um login/dashboard que existe no código mas fica desativado até configurar Supabase.</p></div>
+  </div>
+</div></section>
+
+<section id="fluxo"><div class="wrap">
+  <span class="chip">Como funciona</span>
+  <h2>Do clone ao deploy</h2>
+  <p class="sub">O projeto é um SPA Vite/React estático. Sem servidor próprio: builda pra arquivos estáticos e sobe no Vercel. As integrações externas (IA real, login) são opcionais e desligadas por padrão.</p>
+  <div class="flow">
+    <span>npm install</span><span class="arr">→</span>
+    <span>npm run dev / build</span><span class="arr">→</span>
+    <span>bundle estático (Vite)</span><span class="arr">→</span>
+    <span>deploy Vercel</span><span class="arr">→</span>
+    <span>(opcional) liga Gemini + Supabase</span>
+  </div>
+</div></section>
+
+<section id="pre"><div class="wrap">
+  <span class="chip">Pré-requisitos</span>
+  <h2>Pra rodar localmente</h2>
+  <p class="sub">Modo demo não exige nenhuma conta ou chave — só Node instalado.</p>
+  <div class="grid g3">
+    <div class="card"><h3>Node.js 16+</h3><p>Único requisito real pra rodar o site em modo demo.</p><pre><span class="c"># confira a versão</span>
+node -v</pre></div>
+    <div class="card"><h3>(Opcional) Google AI Studio</h3><p>Só se quiser diagnóstico de IA de verdade em vez do mock.</p><pre><span class="c"># chave</span>
+VITE_GEMINI_API_KEY=...</pre></div>
+    <div class="card"><h3>(Opcional) Supabase</h3><p>Só se quiser ativar login e dashboard, hoje desativados.</p><pre><span class="c"># chaves</span>
+VITE_SUPABASE_URL=...
+VITE_SUPABASE_ANON_KEY=...</pre></div>
+  </div>
+</div></section>
+
+<section id="guia"><div class="wrap">
+  <span class="chip">Guia de uso · passo a passo</span>
+  <h2>Rodar o site em modo demo</h2>
+  <p class="sub">Funciona 100% sem configurar nada. Bundle otimizado (~373KB).</p>
+
+  <div class="step"><div class="b">1</div><div>
+    <h3>Clone o repositório</h3>
+    <p>Pega o código do projeto.</p>
+<pre><span class="k">git clone https://github.com/inematds/web-AG01.git</span>  <span class="c"># baixa o repo</span>
+<span class="k">cd web-AG01</span></pre>
+  </div></div>
+
+  <div class="step"><div class="b">2</div><div>
+    <h3>Instale as dependências</h3>
+    <p>React, Vite, Tailwind, Framer Motion e afins.</p>
+<pre><span class="k">npm install</span>  <span class="c"># instala node_modules</span></pre>
+  </div></div>
+
+  <div class="step"><div class="b">3</div><div>
+    <h3>Suba o servidor de desenvolvimento</h3>
+    <p>Abre em modo demo, com hot reload.</p>
+<pre><span class="k">npm run dev</span>  <span class="c"># http://localhost:3000</span></pre>
+  </div></div>
+
+  <div class="step"><div class="b">4</div><div>
+    <h3>Gere o build de produção</h3>
+    <p>Empacota tudo em arquivos estáticos.</p>
+<pre><span class="k">npm run build</span>  <span class="c"># gera dist/</span>
+<span class="k">npm run preview</span>  <span class="c"># testa o build localmente</span></pre>
+  </div></div>
+
+  <div class="step"><div class="b">5</div><div>
+    <h3>Deploy no Vercel</h3>
+    <p>Importe o repositório <code>inematds/web-AG01</code> em vercel.com — o deploy funciona sem nenhuma variável de ambiente, já que o site parte em modo demo.</p>
+<pre><span class="c"># opcional: variáveis extras no dashboard do Vercel</span>
+<span class="k">VITE_GEMINI_API_KEY</span>=...
+<span class="k">VITE_SUPABASE_URL</span>=...
+<span class="k">VITE_SUPABASE_ANON_KEY</span>=...</pre>
+  </div></div>
+</div></section>
+
+<section id="exemplos"><div class="wrap">
+  <span class="chip">Modo demo x produção</span>
+  <h2>O que está ligado e o que está esperando configuração</h2>
+  <p class="sub">Direto do README do projeto — nada aqui foi inventado.</p>
+  <table>
+    <thead><tr><th>Funcionalidade</th><th>Status</th><th>Descrição</th></tr></thead>
+    <tbody>
+      <tr><td>Landing Page</td><td>Ativo</td><td>Apresentação completa da plataforma</td></tr>
+      <tr><td>Diagnóstico IA</td><td>Demo</td><td>Análise de potencial com IA (mockado)</td></tr>
+      <tr><td>Login / Dashboard</td><td>Desativado</td><td>Requer configuração do Supabase</td></tr>
+      <tr><td>Planos / Preços</td><td>Ativo</td><td>Básico (Grátis), Premium (R$97), VIP (R$297)</td></tr>
+    </tbody>
+  </table>
+  <div class="warn" style="margin-top:2em">
+    <strong>Atenção — segurança.</strong> O próprio repo documenta (<code>SECURITY_DEPLOYMENT_GUIDE.md</code>) que a autenticação atual guarda senha em texto plano, roda no cliente e não tem Row Level Security no Supabase. Ou seja: mesmo ativando login/dashboard, isso ainda não é produção-ready — é só o protótipo indo um passo além do modo demo.
+  </div>
+</div></section>
+
+<section id="roadmap"><div class="wrap">
+  <span class="chip">Roadmap</span>
+  <h2>Pra sair do demo</h2>
+  <p class="sub">O que falta, segundo o próprio guia de deploy do repo.</p>
+  <div class="phase"><div class="tag">Hoje</div><div class="d"><strong>Modo demo no Vercel</strong><span>Landing, planos e diagnóstico mockado funcionando sem nenhuma variável de ambiente.</span></div></div>
+  <div class="phase"><div class="tag">Próximo</div><div class="d"><strong>Diagnóstico com IA real</strong><span>Configurar <code>VITE_GEMINI_API_KEY</code> e descomentar o código original em <code>services/geminiService.ts</code>.</span></div></div>
+  <div class="phase"><div class="tag">Depois</div><div class="d"><strong>Login e dashboard</strong><span>Criar projeto Supabase, rodar o SQL de <code>users</code>/<code>user_dashboard</code> e configurar <code>VITE_SUPABASE_URL</code> / <code>VITE_SUPABASE_ANON_KEY</code>.</span></div></div>
+  <div class="phase"><div class="tag">Antes de produção</div><div class="d"><strong>Endurecer segurança</strong><span>Hoje senha é texto plano, sem hash, sem RLS e auth roda no cliente — precisa de backend de verdade antes de usar com usuários reais.</span></div></div>
+</div></section>
+
+<footer>
+  <div class="wrap">
+    <div class="pill">React 19</div><div class="pill">Vite</div><div class="pill">TypeScript</div><div class="pill">Tailwind CSS</div><div class="pill">Framer Motion</div><div class="pill">Vercel</div>
+    <p style="margin-top:18px">web-AG01 · protótipo em modo demo, não é o inema.club oficial ·
+      <a href="https://github.com/inematds/web-AG01">inematds/web-AG01</a> ·
+      <a href="https://inema.club">INEMA.CLUB</a></p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var KEY='web-ag01-guia-theme';
+    var b=document.body, t=document.getElementById('themeToggle');
+    if(localStorage.getItem(KEY)==='light'){ b.classList.add('light'); t.textContent='☀️'; }
+    t.addEventListener('click',function(){
+      var light=b.classList.toggle('light');
+      t.textContent=light?'☀️':'🌙';
+      localStorage.setItem(KEY, light?'light':'dark');
+    });
+  })();
+</script>
+</body>
+</html>
